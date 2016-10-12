@@ -7,6 +7,6 @@ window.onload = function() {
 	window.dead = new td.Dead(canvas);
 	window.win = new td.Win(canvas);
 	window.fsm.setInitialState(window.game);
-	window.renderer = new td.Renderer(game);
-	window.renderer.render();
+//	window.renderer = new td.Renderer(game);
+//	window.renderer.render();
 };
