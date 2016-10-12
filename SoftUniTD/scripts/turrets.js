@@ -1,5 +1,5 @@
 td.Turrets = function(map, player) {
-	this.active = [0,];
+	this.active = [0];
 	this.layout = [];
 	this.player = null;
 	var layoutMarker = 0;

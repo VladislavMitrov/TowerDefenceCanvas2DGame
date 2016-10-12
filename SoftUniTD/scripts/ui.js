@@ -16,7 +16,6 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 	var wt=150;
 	var ht=25;
 	var	whatUnder = -1;
-
 	var n = 0;
 	stack = this.activeStack;
 	function addToDraw (what) {
@@ -60,6 +59,7 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 				if(clickedTurret){
 
 					whatUnder = 1;
+
 					this.fireRange = {
 						isRound : true,
 						x0 		: Math.floor(x / this.map.gridPixelSize) * this.map.gridPixelSize + this.map.gridPixelSize/2,
@@ -72,7 +72,7 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 					
 					td.Renderer.range = this.fireRange;
 
-					this.turretButtons[0].text = (clickedTurret.lvl + 1 )  + " уровень.";
+					this.turretButtons[0].text = (clickedTurret.lvl + 1 )  + " ниво.";
 					this.turretButtons[1].cost = Math.floor(clickedTurret.cost/2);
 					this.turretButtons[1].hovered = false;
 					if(clickedTurret.lvl < 5 && this.player.money > Math.floor(clickedTurret.cost/2)){
@@ -98,7 +98,7 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 					}
 				} else {
 					whatUnder = 2;
-					for (let i = 0; i < this.towerButtons.length; i++) {
+					for (var i = 0; i < this.towerButtons.length; i++) {
 						this.towerButtons[i].hovered = false;
 						this.towerButtons[i].x0 = xPos + 25;
 						this.towerButtons[i].y0 = yPos + i * 30 ;
@@ -148,6 +148,7 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 
 			whereAdd.push(btn);
 		},
+		//Кнопки турелей
 		function (whereAdd,x0,y0,w,h,visible,captureClick,mouseOver,xBuildCell,yBuildCell,clickFun,mouseOverFun,mouseOutOverFun) {
 			var btn = {
 				x0 				: x0,
@@ -169,7 +170,8 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 	);
 	this.towerButtons = [];
 
-	for (let i = 0; i < this.towerTypesLength; i++) {
+	// Кнопки башен
+	for (var i = 0; i < this.towerTypesLength; i++) {
 		this.type = Object.keys(this.towerTypes)[i];
 		this.cost = this.towerTypes[this.type].cost;
 		this.text = this.towerTypes[this.type].name + ": " + this.cost;
@@ -200,11 +202,10 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 					text 	: [
 						"Щети: " + this.towerTypes[this.towerButtons[i].type].damage + ", радиус: " + this.towerTypes[this.towerButtons[i].type].range,
 						"Презареждане: " + this.towerTypes[this.towerButtons[i].type].cooldown / 1000 + "с.",
-						"Налично на " + (this.towerTypes[this.towerButtons[i].type].fromLvl + 1) + " ниво."
+						"Наличен след " + (this.towerTypes[this.towerButtons[i].type].fromLvl + 1) + " ниво."
 					],
 					multiLine : true
 				};
-
 				addToDraw(this.info);
 			}.bind(this,i),
 			function(){
@@ -213,8 +214,7 @@ td.UI.prototype.setup = function(turrets, towerTypes, player, map, game) {
 		);
 	}
 	this.turretButtons = [];
-
-	addButton(this.turretButtons,0,0,wt,ht,true,false,false,0,0,undefined,undefined,undefined);
+	addButton(this.turretButtons,0,0,wt,ht,true,false,false,0,0,undefined,undefined,undefined);	
 		
 	addButton(this.turretButtons,0,0,wt,ht,true,true,true,0,0,
 		function(i) {

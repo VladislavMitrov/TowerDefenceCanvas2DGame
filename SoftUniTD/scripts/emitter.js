@@ -32,7 +32,7 @@ td.Emitter.prototype.update = function(dt) {
 		}
 	}
 	
-	for (var i = 0; i < this.liveTracers; i++) {
+	for (let i = 0; i < this.liveTracers; i++) {
 		this.tracerPool[i].lifetime -= dt;
 		if (this.tracerPool[i].lifetime > 0) {
 			this.tracerPool[i].alpha = this.tracerPool[i].lifetime / this.tracerPool[i].originalLifetime;

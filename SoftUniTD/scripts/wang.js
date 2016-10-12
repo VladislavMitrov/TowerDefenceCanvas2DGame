@@ -76,4 +76,4 @@ td.Wang = function (size) {
 		}
 	}
 	return tails;
-}
+};

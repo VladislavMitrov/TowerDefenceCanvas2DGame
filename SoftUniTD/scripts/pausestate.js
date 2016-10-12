@@ -48,7 +48,7 @@ td.Dead = function(canvas){
 	this.ctxWidth = this.canvas.width;
 	this.ctxHeight = this.canvas.height;
 	//this.boundResume = this.resume.bind(this);
-}
+};
 
 td.Dead.prototype.enter = function() {
 	this.ctx.fillStyle = 'rgba(50, 50, 50, 0.9)';
