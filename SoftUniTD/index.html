@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>СофтУни-TD</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <script src="scripts/init.js"></script>
+    <script src="scripts/renderer.js"></script>
+    <script src="scripts/map.js"></script>
+    <script src="scripts/turret-types.js"></script>
+    <script src="scripts/enemy-types.js"></script>
+    <script src="scripts/tower-abilities.js"></script>
+    <script src="scripts/turrets.js"></script>
+    <script src="scripts/turret.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/input.js"></script>
+    <script src="scripts/enemies.js"></script>
+    <script src="scripts/emitter.js"></script>
+    <script src="scripts/particle.js"></script>
+    <script src="scripts/tracer.js"></script>
+    <script src="scripts/bullet.js"></script>
+    <script src="scripts/bullets.js"></script>
+    <script src="scripts/enemy.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/mainmenu.js"></script>
+    <script src="scripts/pausestate.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/fsm.js"></script>
+    <script src="scripts/client.js"></script>
+    <script src="scripts/soundmanager.js"></script>
+    <script src="scripts/wang.js"></script>
+</head>
+
+<script>
+    function pse(){
+        if (window.fsm.getName() === "gamegamegame") {
+            window.fsm.changeState(window.pause);
+        }
+    }
+</script>
+<script>
+    soundManager.setup({
+        url: 'js/', // path to load SWF from (overriding default)
+        bgColor: '#333333',
+        wmode: 'transparent',
+        debugMode: false,
+        preferFlash: false,
+        html5PollingInterval: 50,
+
+        onready: function() {
+            var TT = td.TurretTypes;
+            for(tower in TT){
+                for(var j=0; j<TT[tower]["sounds"].length; j++){
+                    soundManager.createSound({
+                        id: TT[tower]["sounds"][j].split(".")[0].split("/")[1],
+                        url: 'audio/'+TT[tower]["sounds"][j],
+                    });
+                }
+            }
+            soundManager.setup({
+                defaultOptions: {
+                    autoLoad: true,
+                    multiShot: true,
+                }
+            });
+        }
+    });
+</script>
+
+<body>
+<div role="main" id="game">
+    <img src="img/gras01.jpg" id="bg" width="0">
+    <div style="position:relative">
+        <canvas id="gameCanvas" width='400'></canvas>
+        <input style="display:none" class="button" type="button" id="resume" value="Продължи" onClick="window.fsm.gotoPrevState(); document.getElementById('resume').style.display = 'none'; document.getElementById('restart').style.display = 'none';">
+        <input style="display:none" class="button" type="button" id="restart" value="Нова Игра" onClick="window.location.reload(); document.getElementById('restart').style.display = 'none'; document.getElementById('resume').style.display = 'none';">
+
+    </div>
+    <div id="gameStats">
+        <table>
+            <tr>
+                <td><div class="gameValuesText">Злато: </div></td>
+                <td><div id="gameMoney" class="gameValues">0</div></td>
+            </tr>
+            <tr>
+                <td><div class="gameValuesText">Здраве: </div></td>
+                <td><div id="gameHP" class="gameValues">0</div></td>
+            </tr>
+            <tr>
+                <td><div class="gameValuesText">Ниво: </div></td>
+                <td><div id="gameLvl" class="gameValues">1</div></td>
+            </tr>
+            <tr>
+                <td><div class="gameValuesText">Опит: </div></td>
+                <td><div id="gameExp" class="gameValues">0/403</div></td>
+            </tr>
+            <tr>
+                <td><div class="gameValuesText">Вълна: </div></td>
+                <td><div id="gameWave" class="gameValues">0</div></td>
+            </tr>
+            <tr>
+                <div id="untilNextWave">
+                    <td><div class="gameValuesText">До следваща вълна: </div></td>
+                    <td><div id="nextWaveTimer" class="gameValues">0 с.</div></td>
+                </div>
+            </tr>
+        </table>
+        <div id="pause">
+            <input class="button" type="button" value="Пауза" onClick="pse();">
+        </div>
+    </div>
+</div>
+</body>
+</html>
