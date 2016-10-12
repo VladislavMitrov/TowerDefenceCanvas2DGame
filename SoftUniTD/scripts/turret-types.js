@@ -10,7 +10,7 @@ td.TurretTypes = {
 		damage: 1,
 		cost: 100,
 		name: "Огнехвъргачка",
-		color: "#376DFF",
+		color: "#cc0000",
 		halfSize: 7,
 		fromLvl: 0
 	},
@@ -26,7 +26,7 @@ td.TurretTypes = {
 		damage: 4,
 		cost: 300,
 		name: "Катапулт",
-		color: "#003EE8",
+		color: "#cb8034",
 		halfSize: 9,
 		fromLvl: 0
 	},
@@ -42,7 +42,7 @@ td.TurretTypes = {
 		damage: 15,
 		cost: 500,
 		name: "Магия",
-		color: "#002999",
+		color: "Purple",
 		halfSize: 12,
 		fromLvl: 2
 	},
@@ -57,9 +57,9 @@ td.TurretTypes = {
 		damage: 0.2,
 		cost: 200,
 		name: "Ледохвъргачка",
-		color: "#0101FF",
+		color: "#000066",
 		halfSize: 10,
-		abilitys: ["freeze"],
+		abilities: ["freeze"],
 		fromLvl: 3
 	}
 

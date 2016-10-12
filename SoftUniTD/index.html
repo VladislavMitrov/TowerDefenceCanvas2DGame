@@ -53,14 +53,14 @@
                 for(var j=0; j<TT[tower]["sounds"].length; j++){
                     soundManager.createSound({
                         id: TT[tower]["sounds"][j].split(".")[0].split("/")[1],
-                        url: 'audio/'+TT[tower]["sounds"][j],
+                        url: 'audio/'+TT[tower]["sounds"][j]
                     });
                 }
             }
             soundManager.setup({
                 defaultOptions: {
                     autoLoad: true,
-                    multiShot: true,
+                    multiShot: true
                 }
             });
         }
@@ -69,7 +69,7 @@
 
 <body>
 <div role="main" id="game">
-    <img src="img/gras01.jpg" id="bg" width="0">
+    <img src="img/grass2.png" id="bg" width="0">
     <div style="position:relative">
         <canvas id="gameCanvas" width='400'></canvas>
         <input style="display:none" class="button" type="button" id="resume" value="Продължи" onClick="window.fsm.gotoPrevState(); document.getElementById('resume').style.display = 'none'; document.getElementById('restart').style.display = 'none';">

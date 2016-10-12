@@ -30,12 +30,10 @@ td.Wang = function (size) {
 	var height = size*5;
 	var tails = [[]];
 
-	//Первую плитку выбираем случайно
 	tails[0][0]=randInt(0,16);
-	//Заполняем первую строку
-	for(var x=1; x<width; x++){
-		var found = false;
-		var N = -1;
+	for(let x=1; x<width; x++){
+		let found = false;
+		let N = -1;
 		do{
 			N++;
 			tail = N % 15;
@@ -47,10 +45,10 @@ td.Wang = function (size) {
 		}while(!found);
 	}
 
-	for(var y=1; y<height; y++){
+	for(let y=1; y<height; y++){
 		tails.push([]);
-		var found = false;
-		var N = -1;
+		let found = false;
+		let N = -1;
 		do{
 			N++;
 			tail = N % 15;
@@ -61,11 +59,11 @@ td.Wang = function (size) {
 			}
 		}while(!found);
 	}
-	for(var y=1;y<height;y++){
-		for(var x=1;x<width;x++){
+	for(let y=1;y<height;y++){
+		for(let x=1;x<width;x++){
 			//console.log(x,y)
-			var found = false;
-			var N = -1;
+			let found = false;
+			let N = -1;
 			do{
 				N++;
 				tail = N % 15;
@@ -78,4 +76,4 @@ td.Wang = function (size) {
 		}
 	}
 	return tails;
-}
+};

@@ -83,7 +83,7 @@ td.Turret.prototype.fire = function(enemies, bullets, dt) {
 				enemies[self.target].yGrid) * enemies[self.target].cellProgress) - self.yGrid + 0.5;
 			var bulletTravelTime = Math.sqrt(bulletDistX * bulletDistX + bulletDistY * bulletDistY) / 0.004;
 			var predictedEnemyPosition = enemies[self.target].predictPosition(bulletTravelTime);
-			for (var i = 0; i < 10; i++) {
+			for (let i = 0; i < 10; i++) {
 				bulletDistX = predictedEnemyPosition[0] - self.xGrid;
 				bulletDistY = predictedEnemyPosition[1] - self.yGrid;
 				bulletTravelTime = Math.sqrt(bulletDistX * bulletDistX + bulletDistY * bulletDistY) / 0.004;
@@ -94,7 +94,7 @@ td.Turret.prototype.fire = function(enemies, bullets, dt) {
 			var dmg = self.damage;
 			var bulletcolor;
 			if(self.abilitys){
-				for(i in self.ability){
+				for(let i in self.ability){
 					dmg+=self.ability[i].damage;
 					bulletcolor = self.ability[i].color;
 					if(self.ability[i].slow){

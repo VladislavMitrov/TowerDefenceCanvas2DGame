@@ -47,7 +47,7 @@ td.Renderer = function(canvas, game) {
 				this.edge, this.edge, x*this.edge/5, y*this.edge/5, this.edge/5,this.edge/5);
 		}
 	}
-	this.bg.src=this.canvas.toDataURL("image/png");
+	this.bg.src=this.canvas.toDataURL("img/gras01.jpg");
 
 };
 
@@ -74,7 +74,7 @@ td.Renderer.prototype.stopRendering = function() {
 };
 td.Renderer.prototype.setCell = function (cellX,cellY,arg) {
 	this.game.map.layout[cellX][cellY] = arg;
-}
+};
 
 td.Renderer.prototype.renderMap = function() {
 	this.ctx.drawImage(this.bg,0,0);
@@ -98,15 +98,7 @@ td.Renderer.prototype.renderMap = function() {
 
 td.Renderer.prototype.renderTurrets = function() {
 	var turrets = this.game.turrets.active;
-	function shadeColor(color, percent) {
-		//console.log(color);
-		var num = parseInt(color.substring(1),16),
-		amt = Math.round(2.55 * percent),
-		R = (num >> 16) + amt,
-		B = (num >> 8 & 0x00FF) + amt,
-		G = (num & 0x0000FF) + amt;
-		return (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
-	}
+	
 	for (var i = 0; i < turrets.length; i++) {
 		if(turrets[i]){
 			var xPixelPos = (turrets[i].xGrid + 0.5) * this.game.map.gridPixelSize;
@@ -115,10 +107,9 @@ td.Renderer.prototype.renderTurrets = function() {
 			var halfSize = turrets[i].halfSize;
 			var lvl = turrets[i].lvl;
 			this.ctx.beginPath();
-			color = shadeColor(color,(lvl)*15);
 			this.ctx.fillStyle = color;
 			this.ctx.fillRect(xPixelPos - halfSize*(1/(i+1)), yPixelPos - halfSize*(1/(i+1)), 2 * halfSize*(1/(i+1)), 2 * halfSize*(1/(i+1)));
-			this.ctx.fillRect(xPixelPos - halfSize, yPixelPos - halfSize, 2 * halfSize, 2 * halfSize);			
+			this.ctx.fillRect(xPixelPos - halfSize, yPixelPos - halfSize, 2 * halfSize, 2 * halfSize);
 			this.ctx.fill();
 			this.ctx.closePath();
 		}
@@ -150,16 +141,15 @@ td.Renderer.prototype.renderEnemies = function(isRange) {
 			var	inCircle = (xPixelPos - td.Renderer.range.x0)*(xPixelPos - td.Renderer.range.x0) +
 				(yPixelPos - td.Renderer.range.y0)*(yPixelPos - td.Renderer.range.y0) < td.Renderer.range.r*td.Renderer.range.r;
 		if(atEnemy && inCircle){
-			//Обводка противника под мышкой
-			this.ctx.strokeStyle = "rgba(200,0,10,0.4)"
+			this.ctx.strokeStyle = "rgba(200,0,10,0.4)";
 			this.ctx.lineWidth = 2;
 			this.ctx.strokeRect(xPixelPos - halfSize, yPixelPos - halfSize, 2 * halfSize, 2 * halfSize);
 		}
 
-		this.ctx.fillStyle = color;
+		this.ctx.fillStyle = "#330000";
 		this.ctx.fillRect(xPixelPos - halfSize, yPixelPos - halfSize, 2 * halfSize, 2 * halfSize);
 
-		this.ctx.fillStyle = "rgba(1,0,0,0.2);";
+		this.ctx.fillStyle = "rgba(1,0,0,0.2)";
 		this.ctx.fillRect(xPixelPos - halfSize, yPixelPos - 5 - halfSize, halfSize*2, 3);
 
 		this.ctx.fillStyle = "#a5260a";
