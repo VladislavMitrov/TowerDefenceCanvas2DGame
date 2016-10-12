@@ -7,4 +7,4 @@ td.TowerAbilityList = {
 		cost: 50,
 		color: "rgba(0,0,255,0.8)"
 	}
-}
+};

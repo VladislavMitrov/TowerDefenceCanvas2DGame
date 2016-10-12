@@ -8,17 +8,17 @@ td.Emitter = function() {
 	this.liveTracers = 0;
 	this.tracerPool = [];
 	
-	for (var i = 0; i < this.totalParticles; i++) {
+	for (let i = 0; i < this.totalParticles; i++) {
 		this.particlePool.push(new td.Particle());
 	}
 	
-	for (var i = 0; i < this.totalTracers; i++) {
+	for (let i = 0; i < this.totalTracers; i++) {
 		this.tracerPool.push(new td.Tracer());
 	}
 };
 
 td.Emitter.prototype.update = function(dt) {
-	for (var i = 0; i < this.liveParticles; i++) {
+	for (let i = 0; i < this.liveParticles; i++) {
 		this.particlePool[i].lifetime -= dt;
 		if (this.particlePool[i].lifetime > 0) {
 			this.particlePool[i].xPos += this.particlePool[i].xVec * dt;

@@ -5,7 +5,6 @@
     <title>СофтУни-TD</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
     <script src="scripts/init.js"></script>
-    <script src="scripts/renderer.js"></script>
     <script src="scripts/map.js"></script>
     <script src="scripts/turret-types.js"></script>
     <script src="scripts/enemy-types.js"></script>
@@ -29,6 +28,7 @@
     <script src="scripts/client.js"></script>
     <script src="scripts/soundmanager.js"></script>
     <script src="scripts/wang.js"></script>
+    <script src="scripts/renderer.js"></script>
 </head>
 
 <script>
@@ -53,14 +53,14 @@
                 for(var j=0; j<TT[tower]["sounds"].length; j++){
                     soundManager.createSound({
                         id: TT[tower]["sounds"][j].split(".")[0].split("/")[1],
-                        url: 'audio/'+TT[tower]["sounds"][j],
+                        url: 'audio/'+TT[tower]["sounds"][j]
                     });
                 }
             }
             soundManager.setup({
                 defaultOptions: {
                     autoLoad: true,
-                    multiShot: true,
+                    multiShot: true
                 }
             });
         }

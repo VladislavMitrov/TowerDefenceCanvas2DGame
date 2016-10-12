@@ -35,7 +35,7 @@ td.Renderer = function(canvas, game) {
 		for(var j=1; j <= 4; j++){
 			titles[n++] = {
 				x: 2+(this.edge+2)*(j-1),
-				y: 2+(this.edge+2)*(i-1),
+				y: 2+(this.edge+2)*(i-1)
 			};
 		}
 	}
@@ -47,7 +47,7 @@ td.Renderer = function(canvas, game) {
 				this.edge, this.edge, x*this.edge/5, y*this.edge/5, this.edge/5,this.edge/5);
 		}
 	}
-	this.bg.src=this.canvas.toDataURL("img/gras01.jpg");
+	this.bg.src=this.canvas.toDataURL("image/png");
 
 };
 
@@ -150,8 +150,7 @@ td.Renderer.prototype.renderEnemies = function(isRange) {
 			var	inCircle = (xPixelPos - td.Renderer.range.x0)*(xPixelPos - td.Renderer.range.x0) +
 				(yPixelPos - td.Renderer.range.y0)*(yPixelPos - td.Renderer.range.y0) < td.Renderer.range.r*td.Renderer.range.r;
 		if(atEnemy && inCircle){
-			//Обводка противника под мышкой
-			this.ctx.strokeStyle = "rgba(200,0,10,0.4)"
+			this.ctx.strokeStyle = "rgba(200,0,10,0.4)";
 			this.ctx.lineWidth = 2;
 			this.ctx.strokeRect(xPixelPos - halfSize, yPixelPos - halfSize, 2 * halfSize, 2 * halfSize);
 		}

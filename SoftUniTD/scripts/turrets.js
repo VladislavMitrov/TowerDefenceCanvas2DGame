@@ -48,7 +48,7 @@ td.Turrets.prototype.sell = function (xCell, yCell) {
 	//this.active.splice(this.layout[yCell][xCell],1);
 	this.active[this.layout[yCell][xCell]] = 0;
 	this.layout[yCell][xCell]=0;
-}
+};
 
 td.Turrets.prototype.upgrade = function (turret) {
 	if(this.player.money<turret.cost/2 || turret.lvl>=5){
@@ -61,11 +61,11 @@ td.Turrets.prototype.upgrade = function (turret) {
 		turret.range *= 1.2;
 		turret.cooldown /= 1.2;
 	}
-}
+};
 
 td.Turrets.prototype.check = function (xCell, yCell) {
 	return this.active[this.layout[yCell][xCell]];
-}
+};
 
 td.Turrets.prototype.update = function(dt, enemies, emitter) {
 	for (var i = 0; i < this.active.length; i++) {
